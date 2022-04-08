@@ -1,0 +1,71 @@
+<form>
+    <div class="mb-3">
+      <label for="cliDoc_DocumentType" class="form-label">Document Type</label>
+      <!--<input type="text" class="form-control" name="cliDoc_DocumentType" [(ngModel)]="cliDoc_DocumentType" *ngIf="client.id!=0" disabled>-->
+    
+        <select class="form-control" name="cliDoc_DocumentType" id="cliDoc_DocumentType" [(ngModel)]="cliDoc_DocumentType" 
+        >  
+            <option *ngFor="let type of documentTypeList$|async" [value]="type.id">{{type.documentType}}</option>
+        </select>
+    </div>
+    <div class ="mb-3">
+        <label for="cliGenGender" class="form-label">Gender Type</label>
+        <select class="form-control" name="cliGenGender" id="cliGenGender" [(ngModel)]="cliGenGender">
+            <option *ngFor="let type of genderTypeList$|async" [value]="type.id">{{type.gender}}</option>
+        </select>
+    </div>
+    <div class ="mb-3">
+        <label for="cli_Name" class="form-label">Name</label>
+        <input placeholder="Name" type="text" class="form-control" [(ngModel)]="cli_Name" name = "cli_Name">
+    </div>
+    <div class ="mb-3">
+        <label for="dni" class="form-label">DNI</label>
+        <input placeholder="DNI" type="number" class="form-control" [(ngModel)]="dni" name = "dni">
+    </div>
+    <br>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [(ngModel)]="cli_Drive" name = "cli_Drive">
+        <label class="form-check-label" for="flexCheckDefault" >
+          Drive?
+        </label>
+    </div>
+    <br>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [(ngModel)]="cli_UseGlasses" name = "cli_UseGlasses">
+        <label class="form-check-label" for="flexCheckDefault">
+          Use Glasses?
+        </label>
+    </div>
+    <br>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"[(ngModel)]="cli_Diabetic" name = "cli_Diabetic">
+        <label class="form-check-label" for="flexCheckDefault" >
+          Is Diabetic?
+        </label>
+    </div>
+    <br>
+    
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"[(ngModel)]="cli_Active" name = "cli_Active">
+        <label class="form-check-label" for="flexCheckDefault" >
+          Is Active?
+        </label>
+    </div>
+    <br>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"[(ngModel)]="cli_OtherDiseases" name = "cli_OtherDiseases">
+        <label class="form-check-label" for="flexCheckDefault" >
+          Other Diseases?
+        </label>
+    </div>
+    <br>
+    
+    <div class ="mb-3">
+        <label for="cli_Diseases" class="form-label">Diseases</label>
+        <input placeholder="Diseases" type="text" class="form-control" [(ngModel)]="cli_Diseases" name = "cli_Diseases">
+    </div>
+
+    <button class="btn btn-primary" (click)="addClient()" *ngIf="client.cli_Id==0">Add</button>
+    <button class="btn btn-primary" (click)="editClient()" *ngIf="client.cli_Id!=0">Update</button>
+      
+</form>
